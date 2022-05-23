@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +22,19 @@ Route::get('/', function () {
 Auth::routes();
 
 //新規作成後マイページ
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// });
 
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('/',         function () { return redirect('/admin/home'); });
-    Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
-    Route::post('login',    'Admin\LoginController@login');
+    // ログイン画面
+    Route::get('login', [App\Http\Controllers\Admin\LoginController::class, 'showLoginForm'])->name('admin.login');
+    // ログイン処理
+    Route::post('login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('login.login');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
-    Route::get('home',      'Admin\HomeController@index')->name('admin.home');
+    Route::get('home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
 });
+    

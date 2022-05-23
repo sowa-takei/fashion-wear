@@ -5,10 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('ログイン画面') }}</div>
+                <div class="card-header">{{ __('管理者ログイン画面') }}</div>
+                @error('login')
+                    <div class="alert alert-danger">
+                        &#x26A0; {{ $message }}
+                    </div>
+                @enderror
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.login') }}">
+                    <form method="POST" action="{{ route('login.login') }}">
+                    <form method="POST" action="/admin/login">
                         @csrf
 
                         <div class="row mb-3">
