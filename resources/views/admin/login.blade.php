@@ -13,8 +13,8 @@
                 @enderror
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login.login') }}">
-                    <form method="POST" action="/admin/login">
+                    <form method="POST" action="{{ route('loginLogin') }}">
+                   
                         @csrf
 
                         <div class="row mb-3">

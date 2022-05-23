@@ -1,14 +1,21 @@
-@extends('layouts.app')
-
-@section('content')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>編集</title>
+</head>
+<body>
 <div class="container">
+<form method="POST" action="{{ route('home.edit') }}">@csrf
     <div class="row justify-content-center">
         <div class="col-md-8">
             <table class="table table-borderless">
                 <thead class="thead-light">
                     <tr>
                         <th>氏名</th>
-                        <td>{{ Auth::user()->name }}{{ Auth::user()->last_name }} </td>
+                        <td><input type="text" name="name" value='{{$user->name}}'></td>
                     </tr>
                     <tr>
                         <th>フリガナ</th>
@@ -37,9 +44,10 @@
                 </thead>
 
             </table>
-            <a href="{{ route('edit') }}">{{ __('編集画面') }}</a>
 
         </div>
     </div>
 </div>
-@endsection
+  
+</body>
+</html>

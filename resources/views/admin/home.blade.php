@@ -9,7 +9,7 @@
               <thead class="thead-light">
                 <tr>
                     <th>管理者名</th>
-                    <td></td>
+                    <td>{{ Auth::admins()->email }}</td>
                 </tr>
 
               </thead>

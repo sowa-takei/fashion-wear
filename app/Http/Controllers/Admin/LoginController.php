@@ -43,33 +43,43 @@ class LoginController extends Controller
         
     }
 
+    // adminログインページ
     public function showLoginForm()
     {
         return view('admin.login'); 
     }
 
-    public function login(Request $request)
+    //adminログイン処理
+    public function loginLogin(Request $request)
     {
-        $credentials = $request->only(['emial', 'password']);
+        $credentials = $request->only(['email', 'password']);
 
         if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('admin.index')->with([
+            return redirect()->route('adminHome')->with([
                 'login_msg' => 'ログインしました。',
             ]);
         }
         return back()->withErrors([
             'login' => ['ログインに失敗しました'],
         ]);
-    }
+     }
+    // public function login(Request $request)
+    // {
+    //     $this->validate($request, [
+    //     'email' => 'email|required',
+    //     'password' => 'required|min:4'
+    //     ]);
+    //     if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+    //         return redirect()->route('admin.index');
+    //     }
+    //         return back()->withErrors([
+    //         'login' => 'メールアドレスかパスワードが間違っています.',
+    //         ]);
+    // }
 
     protected function guard()
     {
         return Auth::guard('admin');  //変更
     }
-
-    
-
-    
-    
     
 }
