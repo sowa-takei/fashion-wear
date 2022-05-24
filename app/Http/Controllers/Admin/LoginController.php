@@ -31,6 +31,7 @@ class LoginController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = '/admin/home';
+    protected $namespace = 'App\Http\Controllers\Admin\LoginController';
 
     /**
      * Create a new controller instance.
@@ -50,12 +51,12 @@ class LoginController extends Controller
     }
 
     //adminログイン処理
-    public function loginLogin(Request $request)
+    public function login(Request $request)
     {
         $credentials = $request->only(['email', 'password']);
 
         if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('adminHome')->with([
+            return redirect()->route('login.index')->with([
                 'login_msg' => 'ログインしました。',
             ]);
         }
@@ -63,19 +64,17 @@ class LoginController extends Controller
             'login' => ['ログインに失敗しました'],
         ]);
      }
-    // public function login(Request $request)
-    // {
-    //     $this->validate($request, [
-    //     'email' => 'email|required',
-    //     'password' => 'required|min:4'
-    //     ]);
-    //     if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-    //         return redirect()->route('admin.index');
-    //     }
-    //         return back()->withErrors([
-    //         'login' => 'メールアドレスかパスワードが間違っています.',
-    //         ]);
-    // }
+     public function logout(Request $request)
+     {
+         Auth::logout();
+         $request->session()->invalidate();
+         $request->session()->regenerateToken();
+ 
+         // ログアウトしたらログインフォームにリダイレクト
+         return redirect()->route('login.index ')->with([
+             'logout_msg' => 'ログアウトしました',
+         ]);
+     }
 
     protected function guard()
     {

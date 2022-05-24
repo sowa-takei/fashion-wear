@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class HomeController extends Controller
 {
@@ -21,7 +27,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function adminHome()
+    public function index()
     {
         return view('admin.home');
     }
@@ -30,4 +36,9 @@ class HomeController extends Controller
     {
         return view('home.edit');
     }
+
+
+    
+    
+
 }

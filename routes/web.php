@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\AdminController;
-
+use App\Http\Controllers\Admin;
+use App\Http\Controllers\Item;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,20 +25,21 @@ Auth::routes();
 //新規作成後マイページ
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// プロフィール編集
-Route::get('edit',[App\Http\Controllers\HomeController::class. 'edit'])->name('edit');
+
+Route::get('edit',function () {
+    return view('home.edit');
+})->name('profile');
+
+Route::post('update',[App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
 Route::group(['prefix' => 'admin'], function() {
     // ログイン画面
-    Route::get('login', [App\Http\Controllers\Admin\LoginController::class, 'showLoginForm'])->name('admin.login');
+    Route::get('showLoginForm', [App\Http\Controllers\Admin\LoginController::class, 'showLoginForm'])->name('admin.login');
     // ログイン処理
-    Route::post('loginLogin', [App\Http\Controllers\Admin\LoginController::class, 'loginLogin'])->name('loginLogin');
-    // その後の遷移(ログイン後)
-    Route::get('adminHome', [App\Http\Controllers\Admin\HomeController::class, 'adminHome'])->name('adminHome');
+    Route::post('login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login.login');
+    Route::get('logout', [App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('admin.login.logout');
+    Route::get('admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('login.index');    
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
-    Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
-    
-});
+Route::get('item', [App\Http\Controllers\Item\ItemController::class, 'create'])->name('item.create');
     

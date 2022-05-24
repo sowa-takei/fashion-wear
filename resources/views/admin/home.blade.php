@@ -5,16 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
            <h1>管理者画面</h1>
+           <a href="{{ route('item.create') }}" class="btn btn-primary">+</a>
            <table class="table table-borderless">
-              <thead class="thead-light">
+              
                 <tr>
                     <th>管理者名</th>
-                    <td>{{ Auth::admins()->email }}</td>
+                    <td></td>
                 </tr>
-
-              </thead>
-           </table>
-                   
+             
+           </table>     
         </div>
     </div>
 </div>

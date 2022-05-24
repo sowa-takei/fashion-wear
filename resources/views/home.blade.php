@@ -37,7 +37,7 @@
                 </thead>
 
             </table>
-            <a href="{{ route('edit') }}">{{ __('編集画面') }}</a>
+            <a href="{{ route('profile') }}">{{ __('編集画面') }}</a>
 
         </div>
     </div>
