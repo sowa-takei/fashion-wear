@@ -15,7 +15,7 @@
                             <tr>
                                 <th>ブランド名</th>
                                 <th>商品詳細</th>
-                                <th>値段</th>
+                                <th>値段saaaaaa</th>
                             </tr>
                         </thead>
                             <tr>  
