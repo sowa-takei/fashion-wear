@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Item;
+
+
 
 class HomeController extends Controller
 {
@@ -23,6 +30,46 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $items = Item::get();
+        return view('admin.home',compact('items'));
     }
+
+    // public function edit()
+    // {
+    //     return view('home.edit');
+    // }
+
+    public function show($id)
+    {
+        $items = Item::find($id);
+
+        return view('item.show', compact('items'));
+    }
+
+    public function edit($id)
+    {
+        $items = Item::find($id);
+
+        return view('item.edit', compact('items'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $items = Item::find($id);
+        $items->update($request->only(['name','introduction','price']));
+
+        return redirect()->route('login.index');
+    }
+
+    public function destroy($id)
+    {
+        $items = Item::find($id);
+        $items->delete();
+        return redirect()->route('login.index');
+    }
+
+
+    
+    
+
 }

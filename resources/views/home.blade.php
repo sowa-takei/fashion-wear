@@ -37,6 +37,7 @@
                 </thead>
 
             </table>
+            <a href="{{ route('profile') }}">{{ __('編集画面') }}</a>
 
         </div>
     </div>
