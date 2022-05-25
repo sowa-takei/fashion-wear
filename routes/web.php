@@ -42,8 +42,13 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('login.index'); 
     Route::get('show{id}', [App\Http\Controllers\Admin\HomeController::class, 'show'])->name('item.show');
     Route::get('edit{id}', [App\Http\Controllers\Admin\HomeController::class, 'edit'])->name('item.edit');
-    Route::post('update{id}',[App\Http\Controllers\Admin\HomeController::class, 'update'])->name('item.update');       
+    Route::post('update{id}',[App\Http\Controllers\Admin\HomeController::class, 'update'])->name('item.update');
+    Route::post('destroy{id}', [App\Http\Controllers\Admin\HomeController::class, 'destroy'])->name('item.destroy');     
 });
 
 Route::get('item', [App\Http\Controllers\item\itemController::class, 'create'])->name('item.create');
-Route::post('store', [App\Http\Controllers\item\itemController::class, 'store'])->name('item.store');    
+Route::post('store', [App\Http\Controllers\item\itemController::class, 'store'])->name('item.store');
+
+Route::get('index', [App\Http\Controllers\Brand\BrandController::class, 'index'])->name('brand.index');
+Route::get('create', [App\Http\Controllers\Brand\BrandController::class, 'create'])->name('brand.create');
+
