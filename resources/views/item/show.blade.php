@@ -1,36 +1,34 @@
 @extends('layouts.app_admin')
 @section('content')
 <div class="conteiner">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">{{ __('新規作成画面') }}
-                <a href="{{ route('item.create') }}" class="btn btn-primary">+</a>
+      <div class="card">
+        <div class="card-header">{{ __('商品詳細画面') }}</div>
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{ Storage::url($items->image_id) }}" width="100%" >
                 </div>
-                <div class="card-body">
-                    
+                <div class="col-8">
                     <table class="table table-borderless"> 
-                        <thead class="thead-light">
-                            <tr>
-                                <th>商品id</th>
-                                <th>商品名</th>
-                                <th>商品詳細</th>
-                                <th>値段</th>
-                            </tr>
-                        </thead>
-                        
-                            <tr>
-                                <td>{{ $items->id}}</td>
-                                <td>{{ $items->name}}</td>
-                                <td>{{ $items->introduction }}</td>
-                                <td>{{ $items->price }}</td>
-                                <td><a href="" class="btn btn-primary">詳細</a></td>
-                            </tr>
-                         
+                        <tr>
+                            <th>商品id</th>
+                            <td>{{ $items->id}}</td>
+                        </tr>
+                        <tr>
+                            <th>商品名</th>
+                            <td>{{ $items->name}}</td>
+                        </tr>
+                        <tr>
+                            <th>商品詳細</th>
+                            <td>{{ $items->introduction }}</td>
+                        </tr>
+                        <tr>
+                            <th>値段</th>
+                            <td>{{ $items->price }}円</td>     
+                        </tr>
                     </table>
                 </div>
             </div>
-        </div>
+          </div>
     </div>
 </div>
 @endsection
