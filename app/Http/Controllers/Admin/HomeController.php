@@ -61,6 +61,13 @@ class HomeController extends Controller
         return redirect()->route('login.index');
     }
 
+    public function destroy($id)
+    {
+        $items = Item::find($id);
+        $items->delete();
+        return redirect()->route('login.index');
+    }
+
 
     
     
