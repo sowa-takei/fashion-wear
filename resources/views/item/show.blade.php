@@ -1,5 +1,4 @@
 @extends('layouts.app_admin')
-
 @section('content')
 <div class="conteiner">
     <div class="row justify-content-center">
@@ -19,15 +18,15 @@
                                 <th>値段</th>
                             </tr>
                         </thead>
-                        @foreach ($items as $item)
+                        
                             <tr>
-                                <td>{{ $item->id}}</td>
-                                <td>{{ $item->name}}</td>
-                                <td>{{ $item->introduction }}</td>
-                                <td>{{ $item->price }}</td>
-                                <td><a href="{{ route('item.show',['id'=>$item->id]) }}" class="btn btn-primary">詳細</a></td>
+                                <td>{{ $items->id}}</td>
+                                <td>{{ $items->name}}</td>
+                                <td>{{ $items->introduction }}</td>
+                                <td>{{ $items->price }}</td>
+                                <td><a href="" class="btn btn-primary">詳細</a></td>
                             </tr>
-                        @endforeach 
+                         
                     </table>
                 </div>
             </div>

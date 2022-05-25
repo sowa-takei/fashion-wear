@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Item;
 
 
 
@@ -29,12 +30,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $items = Item::get();
+        return view('admin.home',compact('items'));
     }
 
     public function edit()
     {
         return view('home.edit');
+    }
+
+    public function show($id)
+    {
+        $items = Item::find($id);
+
+        return view('item.show', compact('items'));
     }
 
 

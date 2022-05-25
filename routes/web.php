@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Item\itemController;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Item;
 /*
@@ -38,8 +39,10 @@ Route::group(['prefix' => 'admin'], function() {
     // ログイン処理
     Route::post('login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login.login');
     Route::get('logout', [App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('admin.login.logout');
-    Route::get('admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('login.index');    
+    Route::get('admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('login.index'); 
+    Route::get('show{id}', [App\Http\Controllers\Admin\HomeController::class, 'show'])->name('item.show'); 
+       
 });
 
-Route::get('item', [App\Http\Controllers\Item\ItemController::class, 'create'])->name('item.create');
-    
+Route::get('item', [App\Http\Controllers\item\itemController::class, 'create'])->name('item.create');
+Route::post('store', [App\Http\Controllers\item\itemController::class, 'store'])->name('item.store');    
