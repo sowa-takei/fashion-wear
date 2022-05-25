@@ -34,16 +34,31 @@ class HomeController extends Controller
         return view('admin.home',compact('items'));
     }
 
-    public function edit()
-    {
-        return view('home.edit');
-    }
+    // public function edit()
+    // {
+    //     return view('home.edit');
+    // }
 
     public function show($id)
     {
         $items = Item::find($id);
 
         return view('item.show', compact('items'));
+    }
+
+    public function edit($id)
+    {
+        $items = Item::find($id);
+
+        return view('item.edit', compact('items'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $items = Item::find($id);
+        $items->update($request->only(['name','introduction','price']));
+
+        return redirect()->route('login.index');
     }
 
 
