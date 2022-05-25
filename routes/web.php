@@ -40,8 +40,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login.login');
     Route::get('logout', [App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('admin.login.logout');
     Route::get('admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('login.index'); 
-    Route::get('show{id}', [App\Http\Controllers\Admin\HomeController::class, 'show'])->name('item.show'); 
-       
+    Route::get('show{id}', [App\Http\Controllers\Admin\HomeController::class, 'show'])->name('item.show');
+    Route::get('edit{id}', [App\Http\Controllers\Admin\HomeController::class, 'edit'])->name('item.edit');
+    Route::post('update{id}',[App\Http\Controllers\Admin\HomeController::class, 'update'])->name('item.update');       
 });
 
 Route::get('item', [App\Http\Controllers\item\itemController::class, 'create'])->name('item.create');
