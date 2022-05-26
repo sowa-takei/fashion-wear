@@ -17,7 +17,7 @@ class CreateBrandsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image_id');
-            $table->string('introduction');
+            
             $table->timestamps();
         });
     }
