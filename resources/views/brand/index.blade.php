@@ -23,8 +23,13 @@
                             <tr>  
                                 <td>{{ $brand->id}}</td>
                                 <td>{{ $brand->name}}</td>
+                                <td><a href="{{ route('brand.show',['id'=>$brand->id]) }}" class="btn btn-primary">詳細</a></td>
                                 <td><a href="{{ route('brand.edit',['id'=>$brand->id]) }}" class="btn btn-info">編集</a></td>
-                                
+                                <td>
+                                    <form action="{{ route('brand.destroy',['id'=>$brand->id]) }}" method="POST">@csrf
+                                        <button type="submit" class="btn btn-danger">削除</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </table>
