@@ -44,6 +44,5 @@
         </div>
     </div>
 </form>
-<script>document.foo.submit();</script>
 </div>
 @endsection

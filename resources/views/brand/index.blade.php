@@ -13,15 +13,20 @@
                     <table class="table table-borderless"> 
                         <thead class="thead-light">
                             <tr>
+                                <th>id</th>
                                 <th>ブランド名</th>
-                                <th>商品詳細</th>
-                                <th>値段saaaaaa</th>
+                               
+                                
                             </tr>
                         </thead>
+                        @foreach ($brands as $brand)
                             <tr>  
-                                <td>   
-                                </td>
+                                <td>{{ $brand->id}}</td>
+                                <td>{{ $brand->name}}</td>
+                                <td><a href="{{ route('brand.edit',['id'=>$brand->id]) }}" class="btn btn-info">編集</a></td>
+                                
                             </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>
