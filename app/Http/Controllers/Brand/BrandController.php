@@ -41,6 +41,13 @@ class BrandController extends Controller
             }
         }
     }
+
+    public function show($id)
+    {
+        $brands = Brand::find($id);
+
+        return view('brand.show', compact('brands'));
+    }
     public function edit($id)
     {
         $brands = Brand::find($id);
@@ -55,6 +62,13 @@ class BrandController extends Controller
 
         return redirect()->route('brand.index');
        
+    }
+
+    public function destroy($id)
+    {
+        $brands = Brand::find($id);
+        $brands->delete();
+        return redirect()->route('brand.index');
     }
     
 }
