@@ -51,4 +51,8 @@ Route::post('store', [App\Http\Controllers\item\itemController::class, 'store'])
 
 Route::get('index', [App\Http\Controllers\Brand\BrandController::class, 'index'])->name('brand.index');
 Route::get('create', [App\Http\Controllers\Brand\BrandController::class, 'create'])->name('brand.create');
+Route::post('store', [App\Http\Controllers\Brand\BrandController::class, 'store'])->name('brand.store');
+Route::get('edit{id}', [App\Http\Controllers\Brand\BrandController::class, 'edit'])->name('brand.edit');
+Route::post('update{id}', [App\Http\Controllers\Brand\BrandController::class, 'update'])->name('brand.update');
+
 
