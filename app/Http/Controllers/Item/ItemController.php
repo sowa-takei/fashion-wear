@@ -12,7 +12,7 @@ class ItemController extends Controller
     {
         return view('item.create'); 
     }
-    public function store(Request $request)
+    public function store (Request $request)
     {
         // 画像フォームでリクエストした画像情報を取得
         $img = $request->file('image_id');
@@ -29,11 +29,9 @@ class ItemController extends Controller
                     'introduction' => $request['introduction'],
                     'price' => $request['price'],
                 ]);
-                return redirect()->route('login.index')->with([
-                    'logout_msg' => 'ログアウトしました',
-                ]);
             }
         }
+        return redirect()->route('login.index');
         
     }
     

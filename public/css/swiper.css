@@ -1,0 +1,15 @@
+.swiper {
+  width: 600px;
+  height: 300px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .sip-slider,
+  .swiper-container,
+  .swiper-wrapper,
+  .swiper-slide,
+  .swiper-slide img {
+    transition-duration: 100ms !important;
+  }
+}
