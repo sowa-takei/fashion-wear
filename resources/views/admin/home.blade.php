@@ -24,7 +24,7 @@
                                 <td>{{ $item->id}}</td>
                                 <td>{{ $item->name}}</td>
                                 <td>{{ $item->introduction }}</td>
-                                <td>{{ $item->price }}</td>
+                                <td>{{ $item->price }}</td>                                
                                 <td><a href="{{ route('item.show',['id'=>$item->id]) }}" class="btn btn-primary">詳細</a></td>
                                 <td><a href="{{ route('item.edit',['id'=>$item->id]) }}" class="btn btn-info">編集</a></td>
                                 <td>

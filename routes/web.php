@@ -17,14 +17,12 @@ use App\Http\Controllers\Item;
 |
 */
 
-Route::get('/', function () {
-    return view('home/top');
-});
+Route::get('/', [App\Http\Controllers\User\HomeController::class, 'top'])->name('top');
 
 Auth::routes();
 
 //新規作成後マイページ
-Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('home');
 
 
 Route::get('edit',function () {
@@ -43,11 +41,12 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('show{id}', [App\Http\Controllers\Admin\HomeController::class, 'show'])->name('item.show');
     Route::get('edit{id}', [App\Http\Controllers\Admin\HomeController::class, 'edit'])->name('item.edit');
     Route::post('update{id}',[App\Http\Controllers\Admin\HomeController::class, 'update'])->name('item.update');
-    Route::post('destroy{id}', [App\Http\Controllers\Admin\HomeController::class, 'destroy'])->name('item.destroy');     
+    Route::post('destroy{id}', [App\Http\Controllers\Admin\HomeController::class, 'destroy'])->name('item.destroy');   
+    Route::get('item', [App\Http\Controllers\item\itemController::class, 'create'])->name('item.create');
+    Route::post('store', [App\Http\Controllers\item\itemController::class, 'store'])->name('item.store');  
 });
 
-Route::get('item', [App\Http\Controllers\item\itemController::class, 'create'])->name('item.create');
-Route::post('store', [App\Http\Controllers\item\itemController::class, 'store'])->name('item.store');
+
 
 Route::get('index', [App\Http\Controllers\Brand\BrandController::class, 'index'])->name('brand.index');
 Route::get('create', [App\Http\Controllers\Brand\BrandController::class, 'create'])->name('brand.create');

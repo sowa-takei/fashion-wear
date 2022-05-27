@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
+use App\Models\brand;
 
 
 
@@ -31,6 +32,7 @@ class HomeController extends Controller
     public function index()
     {
         $items = Item::get();
+        $brands = Brand::get();
         return view('admin.home',compact('items'));
     }
 
