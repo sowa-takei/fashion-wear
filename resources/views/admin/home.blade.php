@@ -3,7 +3,7 @@
 @section('content')
 <div class="conteiner">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('新規作成画面') }}
                 <a href="{{ route('item.create') }}" class="btn btn-primary">+</a>

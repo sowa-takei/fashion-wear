@@ -34,10 +34,15 @@
                         <th>性別</th>
                         <td> {{ Auth::user()->gender }}</td>
                     </tr>
+                    <tr>
+                        <th>ID</th>
+                        <td> {{ Auth::user()->id }}</td>
+                    </tr>
                 </thead>
 
             </table>
-            <a href="{{ route('profile') }}">{{ __('編集画面') }}</a>
+            <a href="{{ route('user.edit',['id=>$user->id']) }}" class="btn btn-info">編集</a>
+        
 
         </div>
     </div>

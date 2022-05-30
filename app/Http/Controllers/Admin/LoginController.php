@@ -70,7 +70,7 @@ class LoginController extends Controller
          
  
          // ログアウトしたらログインフォームにリダイレクト
-         return redirect()->route('home')->with([
+         return redirect()->route('top')->with([
              'logout_msg' => 'ログアウトしました',
          ]);
      }

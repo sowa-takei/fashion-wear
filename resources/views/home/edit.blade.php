@@ -2,13 +2,14 @@
 
 @section('content')
 <div class="container">
-<form method="POST" action="{{ route('update') }}">@csrf
+<form method="POST" action="{{ route('user.update',Auth::user()->id) }}" enctype="multipart/form-data">@csrf
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('編集画面') }}
                     <div class="card-body">
                         <div class="row mb-3">
+                        
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('名前') }}</label>
                             <div class="col-md-4">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', Auth::user()->name)  }}" required autocomplete="name" autofocus>
@@ -68,9 +69,8 @@
                                 <input id="email" type="text" class="form-control @error('name') is-invalid @enderror" name="email" value="{{ Auth::user()->email  }}" required autocomplete="email" autofocus>
                             </div>
                         </div>
-                        <a href="{{ route('admin.login') }}">ログイン</a>
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('Register') }}
+                        <button type="submit" class="btn btn-success">
+                            {{ __('更新') }}
                         </button>
                     </div>
                 </div>
