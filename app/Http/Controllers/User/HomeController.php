@@ -26,7 +26,13 @@ class HomeController extends Controller
     public function index()
     {
         $items = Item::get();
-        return view('home.index');
+        return view('home.index',compact('items'));
+    }
+    public function show($id)
+    {
+        $items = Item::find($id);
+
+        return view('home.show', compact('items'));
     }
 
     public function edit($id)

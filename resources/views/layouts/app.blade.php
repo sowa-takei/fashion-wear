@@ -48,6 +48,10 @@
                             <a class="nav-link" href="{{ route('home') }}">マイページ</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.index') }}">商品一覧</a>
+                        </li>
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
