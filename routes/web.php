@@ -18,18 +18,13 @@ use App\Http\Controllers\Item;
 */
 
 Route::get('/', [App\Http\Controllers\User\HomeController::class, 'top'])->name('top');
+//新規作成後マイページ
+Route::get('home', [App\Http\Controllers\User\HomeController::class, 'home'])->name('home');
+Route::get('index', [App\Http\Controllers\User\HomeController::class, 'index'])->name('user.index');
+Route::get('edit{id}', [App\Http\Controllers\User\HomeController::class, 'edit'])->name('user.edit');
+Route::post('update{id}',[App\Http\Controllers\User\HomeController::class, 'update'])->name('user.update');
 
 Auth::routes();
-
-//新規作成後マイページ
-Route::get('home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('home');
-
-
-Route::get('edit',function () {
-    return view('home.edit');
-})->name('profile');
-
-Route::post('update',[App\Http\Controllers\HomeController::class, 'update'])->name('update');
 
 Route::group(['prefix' => 'admin'], function() {
     // ログイン画面
@@ -47,13 +42,13 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 
-
-Route::get('index', [App\Http\Controllers\Brand\BrandController::class, 'index'])->name('brand.index');
-Route::get('create', [App\Http\Controllers\Brand\BrandController::class, 'create'])->name('brand.create');
-Route::post('store', [App\Http\Controllers\Brand\BrandController::class, 'store'])->name('brand.store');
-Route::get('show{id}',[App\Http\Controllers\Brand\BrandController::class, 'show'])->name('brand.show');
-Route::get('edit{id}', [App\Http\Controllers\Brand\BrandController::class, 'edit'])->name('brand.edit');
-Route::post('update{id}', [App\Http\Controllers\Brand\BrandController::class, 'update'])->name('brand.update');
-Route::post('destroy{id}', [App\Http\Controllers\Brand\BrandController::class, 'destroy'])->name('brand.destroy');
-
+Route::group(['prefix' => 'brand'], function() {
+    Route::get('index', [App\Http\Controllers\Brand\BrandController::class, 'index'])->name('brand.index');
+    Route::get('create', [App\Http\Controllers\Brand\BrandController::class, 'create'])->name('brand.create');
+    Route::post('store', [App\Http\Controllers\Brand\BrandController::class, 'store'])->name('brand.store');
+    Route::get('show{id}',[App\Http\Controllers\Brand\BrandController::class, 'show'])->name('brand.show');
+    Route::get('edit{id}', [App\Http\Controllers\Brand\BrandController::class, 'edit'])->name('brand.edit');
+    Route::post('update{id}', [App\Http\Controllers\Brand\BrandController::class, 'update'])->name('brand.update');
+    Route::post('destroy{id}', [App\Http\Controllers\Brand\BrandController::class, 'destroy'])->name('brand.destroy');
+});
 
