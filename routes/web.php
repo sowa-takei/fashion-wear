@@ -22,6 +22,7 @@ Route::get('/', [App\Http\Controllers\User\HomeController::class, 'top'])->name(
 Route::get('home', [App\Http\Controllers\User\HomeController::class, 'home'])->name('home');
 Route::get('index', [App\Http\Controllers\User\HomeController::class, 'index'])->name('user.index');
 Route::get('edit{id}', [App\Http\Controllers\User\HomeController::class, 'edit'])->name('user.edit');
+Route::get('show{id}', [App\Http\Controllers\User\HomeController::class, 'show'])->name('user.show');
 Route::post('update{id}',[App\Http\Controllers\User\HomeController::class, 'update'])->name('user.update');
 
 Auth::routes();
