@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\brand;
+use App\Models\user;
 
 
 
@@ -35,11 +36,6 @@ class HomeController extends Controller
         $brands = Brand::get();
         return view('admin.home',compact('items'));
     }
-
-    // public function edit()
-    // {
-    //     return view('home.edit');
-    // }
 
     public function show($id)
     {
