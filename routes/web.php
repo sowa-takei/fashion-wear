@@ -19,12 +19,14 @@ use App\Http\Controllers\Item;
 
 Route::get('/', [App\Http\Controllers\User\HomeController::class, 'top'])->name('top');
 //新規作成後マイページ
-Route::get('home', [App\Http\Controllers\User\HomeController::class, 'home'])->name('home');
-Route::get('index', [App\Http\Controllers\User\HomeController::class, 'index'])->name('user.index');
-Route::get('edit{id}', [App\Http\Controllers\User\HomeController::class, 'edit'])->name('user.edit');
-Route::get('show{id}', [App\Http\Controllers\User\HomeController::class, 'show'])->name('user.show');
-Route::post('update{id}',[App\Http\Controllers\User\HomeController::class, 'update'])->name('user.update');
-
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('home', [App\Http\Controllers\User\HomeController::class, 'home'])->name('home');
+    Route::get('index', [App\Http\Controllers\User\HomeController::class, 'index'])->name('user.index');
+    Route::get('edit{id}', [App\Http\Controllers\User\HomeController::class, 'edit'])->name('user.edit');
+    Route::get('show{id}', [App\Http\Controllers\User\HomeController::class, 'show'])->name('user.show');
+    Route::post('update{id}',[App\Http\Controllers\User\HomeController::class, 'update'])->name('user.update');
+    Route::get('brand',[App\Http\Controllers\User\HomeController::class, 'brand'])->name('user.brand');
+});
 Auth::routes();
 
 Route::group(['prefix' => 'admin'], function() {

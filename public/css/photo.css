@@ -1,0 +1,15 @@
+.photo {
+  text-align: right;
+}
+
+.name {
+  text-align: left;
+  font-size: 30px;
+  font-family: 'Cherry Swash', cursive;
+  padding-top: 20px;
+}
+
+.introduction {
+  font-family: 'Itim', cursive;
+  font-size: 20px;
+}
