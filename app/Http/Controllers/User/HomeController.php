@@ -28,6 +28,13 @@ class HomeController extends Controller
         $items = Item::get();
         return view('home.index',compact('items'));
     }
+
+    public function brand()
+    {
+        $brands = Brand::get();
+        return view('home.brand',compact('brands'));
+    }
+    
     public function show($id)
     {
         $items = Item::find($id);
