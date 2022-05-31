@@ -33,12 +33,12 @@
                         @foreach ($items as $item)
                             <div class="col-6">
                                 <div class="mx-auto">
-                                    <img src="{{ Storage::url($item->image_id) }}"  height="400px" >
+                                    <div style="text-align:center;"><img src="{{ Storage::url($item->image_id) }}"  height="400px" ></div>
                                     <div class="row mt-3">
-                                        {{ $item->name}}
+                                        <div style="text-align:center;">{{ $item->name}}</div>
                                     </div>
                                     <div class="row mt-1">
-                                        {{ $item->price}}
+                                        <div style="text-align:center;">￥{{ $item->price}}</div>
                                     </div>
                                 </div>
                             </div>
