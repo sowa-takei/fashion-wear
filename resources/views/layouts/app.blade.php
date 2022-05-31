@@ -21,6 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/swiper.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/photo.css') }}" rel="stylesheet">
     
 </head>
 <body>
