@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Item;
 use App\Models\User;
+use App\Models\Brand;
+use App\Models\like;
 
 class HomeController extends Controller
 {
@@ -29,17 +31,40 @@ class HomeController extends Controller
         return view('home.index',compact('items'));
     }
 
+    public function serch(Request $request)
+    {
+        $keyword_name = $request->name;
+        if(!empty($keyword_name))
+        {
+            $query = Item::query();
+            $items = $query->where('name','like', '%' .$keyword_name. '%')->get();
+            return view('home.index',compact('request'))->with([
+                'items' => $items
+            ]);
+        }
+    }
+ 
+    public function show($id)
+    {
+        $items = Item::find($id);
+        return view('home.show', compact('items'));
+    }
+
     public function brand()
     {
         $brands = Brand::get();
         return view('home.brand',compact('brands'));
     }
-    
-    public function show($id)
-    {
-        $items = Item::find($id);
 
-        return view('home.show', compact('items'));
+    public function brand_show($id,Request $request)
+    {
+        $brands = Brand::find($id);
+        $keyword_name = $request->name;
+        $query = Item::query();
+        $items = $query->where('name','like', '%' .$keyword_name. '%')->get();
+        return view('home.brand_show',compact('brands','items','request'))->with([
+            'items' => $items
+        ]);
     }
 
     public function edit($id)
