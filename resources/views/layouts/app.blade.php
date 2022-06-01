@@ -34,6 +34,14 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <form action="{{ url('serch')}}" method="post">
+                    {{ csrf_field()}}
+                    {{method_field('get')}}
+                    <div class="form-group">
+                        <input type="text" class="form-control col-md-5" placeholder="検索したい名前を入力してください" name="name">
+                    </div>
+                    <button type="submit" class="btn btn-primary col-md-5">検索</button>
+                </form>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -51,6 +59,10 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.index') }}">商品一覧</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.brand') }}">ブランド一覧</a>
                         </li>
 
                         <!-- Authentication Links -->
