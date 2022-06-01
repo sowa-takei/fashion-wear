@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddItemsUserIdColumnToItemsTable extends Migration
+class AddUserIdItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,11 @@ class AddItemsUserIdColumnToItemsTable extends Migration
     public function up()
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
+            $table->foreignId('user_id')//usersテーブルの外部キー設定
+                ->constrained() //userテーブルのidカラムを参照するconstrainedメソッド
+                ->onDelete('cascade'); //削除時のオプション
         });
+
     }
 
     /**
@@ -25,8 +28,6 @@ class AddItemsUserIdColumnToItemsTable extends Migration
      */
     public function down()
     {
-        Schema::table('items', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

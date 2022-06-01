@@ -44,10 +44,14 @@ class HomeController extends Controller
         }
     }
  
-    public function show($id)
+    public function show($id,Request $request)
     {
+        $reviews = Item::withCount('likes')->orderBy('id', 'desc')->paginate(10);
+        $param = [
+            'reviews' => $reviews,
+        ];
         $items = Item::find($id);
-        return view('home.show', compact('items'));
+        return view('home.show', compact('items','$param'));
     }
 
     public function brand()
@@ -56,15 +60,11 @@ class HomeController extends Controller
         return view('home.brand',compact('brands'));
     }
 
-    public function brand_show($id,Request $request)
+    public function brand_show($id)
     {
         $brands = Brand::find($id);
-        $keyword_name = $request->name;
-        $query = Item::query();
-        $items = $query->where('name','like', '%' .$keyword_name. '%')->get();
-        return view('home.brand_show',compact('brands','items','request'))->with([
-            'items' => $items
-        ]);
+        $items = item::where('name','like', '%' .$brands->name. '%')->get();
+        return view('home.brand_show',compact('brands','items'));
     }
 
     public function edit($id)

@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\like;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
-    public function item()
-    {
-        return $this->hasMany('App/Models/Item');
-    }
+    // public function likes()
+    // {
+    //     return $this->hasMany(Like::class);
+    // }
 
     /**
      * The attributes that are mass assignable.

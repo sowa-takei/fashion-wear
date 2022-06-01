@@ -26,6 +26,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('show{id}', [App\Http\Controllers\User\HomeController::class, 'show'])->name('user.show');
     Route::post('update{id}',[App\Http\Controllers\User\HomeController::class, 'update'])->name('user.update');
     Route::get('brand',[App\Http\Controllers\User\HomeController::class, 'brand'])->name('user.brand');
+    Route::get('brand_show{id}', [App\Http\Controllers\User\HomeController::class, 'brand_show'])->name('user.brand_show');
+    Route::get('serch', [App\Http\Controllers\User\HomeController::class, 'serch'])->name('serch');
+    Route::post('like', [App\Http\Controllers\USer\itemController::class, 'like'])->name('like');
 });
 Auth::routes();
 

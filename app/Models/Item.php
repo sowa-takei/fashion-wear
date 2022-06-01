@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\like;
 
 class Item extends Model
 {
     use HasFactory;
-    public function user()
-    {
-        return $this->belongsTo('User::class');
-    }
-
+  
+    //後でViewで使う、いいねされているかを判定するメソッド。
+    
     protected $table = 'items';
     protected $fillable = [
         'name',
