@@ -18,26 +18,20 @@
                           {{ $items->introduction }}
                       </div>
                     </div>
-                    @auth
-                        <!-- Review.phpに作ったisLikedByメソッドをここで使用 -->
-                        @if (!$review->isLikedBy(Auth::user()))
-                            <span class="likes">
-                                <i class="fas fa-music like-toggle" data-review-id="{{ $item->id }}"></i>
-                            <span class="like-counter">{{$item->likes_count}}</span>
-                            </span><!-- /.likes -->
-                        @else
-                            <span class="likes">
-                                <i class="fas fa-music heart like-toggle liked" data-review-id="{{ $item->id }}"></i>
-                            <span class="like-counter">{{$item->likes_count}}</span>
-                            </span><!-- /.likes -->
-                        @endif
-                    @endauth
-                    @guest
-                        <span class="likes">
-                            <i class="fas fa-music heart"></i>
-                            <span class="like-counter">{{$item->likes_count}}</span>
-                        </span><!-- /.likes -->
-                    @endguest   
+                    <span>
+                    <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
+                    @if($like)
+                    <!-- 「いいね」取消用ボタンを表示 -->
+                    <a href="{{ route('unlike',$items) }}">
+                        <img src="{{asset('img/nicebutton.png')}}" width="30px">
+                    </a>
+                    @else
+                    <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
+                    <a href="{{ route('like',$items) }}" >
+                        <img src="{{asset('img/iine.png')}}" width="30px">
+                    </a>
+                    @endif
+                    </span>
                 </div>
             </div>
           </div>

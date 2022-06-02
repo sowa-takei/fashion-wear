@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Item\itemController;
-use App\Http\Controllers\Admin;
-use App\Http\Controllers\Item;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,3 +57,5 @@ Route::group(['prefix' => 'brand'], function() {
     Route::post('destroy{id}', [App\Http\Controllers\Brand\BrandController::class, 'destroy'])->name('brand.destroy');
 });
 
+Route::get('like/{items}', [App\Http\Controllers\LikeController::class, 'like'])->name('like');
+Route::get('unlike/{items}', [App\Http\Controllers\LikeController::class, 'unlike'])->name('unlike');

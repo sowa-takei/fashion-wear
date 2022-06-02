@@ -9,8 +9,22 @@ use App\Models\like;
 class Item extends Model
 {
     use HasFactory;
+    public function user() 
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany('App\Models\Like');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review');
+    }
   
-    //後でViewで使う、いいねされているかを判定するメソッド。
+
     
     protected $table = 'items';
     protected $fillable = [

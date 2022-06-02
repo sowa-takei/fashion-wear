@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Item;
@@ -44,14 +45,11 @@ class HomeController extends Controller
         }
     }
  
-    public function show($id,Request $request)
+    public function show(Item $item, $id)
     {
-        $reviews = Item::withCount('likes')->orderBy('id', 'desc')->paginate(10);
-        $param = [
-            'reviews' => $reviews,
-        ];
+        $like=Like::where('item_id', $item->id)->where('user_id', auth()->user()->id)->first(); 
         $items = Item::find($id);
-        return view('home.show', compact('items','$param'));
+        return view('home.show', compact('items','like'));
     }
 
     public function brand()

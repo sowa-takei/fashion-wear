@@ -11,15 +11,15 @@ class Like extends Model
 
     public function user()
     {
-        return $this->belongsTo(USer::class);
+        return $this->belongsTo('App\Models\User');
     }
 
     public function item()
     {
-        return $this->belongsTo(Item::class);
+        return $this->belongsTo('App\Models\Item');
     }
          
     //いいねが既にされているかを確認
 
-    // protected $fillable = ['item_id','user_id'];
+    protected $fillable = ['item_id','user_id'];
 }
