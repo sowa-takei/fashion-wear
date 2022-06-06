@@ -12,10 +12,19 @@ use App\Models\like;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    // public function likes()
-    // {
-    //     return $this->hasMany(Like::class);
-    // }
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 
     /**
      * The attributes that are mass assignable.

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserIdItemsTable extends Migration
+class ChangeItemsUserId extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,9 @@ class AddUserIdItemsTable extends Migration
     public function up()
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->foreignId('user_id')//usersテーブルの外部キー設定
-                ->constrained() //userテーブルのidカラムを参照するconstrainedメソッド
-                ->onDelete('cascade'); //削除時のオプション
+            $table->unsignedBigInteger('user_id')->nullable()->default(null)->change();
+            $table->unsignedBigInteger('user_id')->change();
         });
-
     }
 
     /**
@@ -28,6 +26,8 @@ class AddUserIdItemsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('items', function (Blueprint $table) {
+            //
+        });
     }
 }

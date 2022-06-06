@@ -5,21 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Like extends Model
+class Review extends Model
 {
     use HasFactory;
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(USer::class);
     }
 
-    public function items()
+    public function item()
     {
         return $this->belongsTo(Item::class);
     }
-         
-    //いいねが既にされているかを確認
-
-    protected $fillable = ['item_id','user_id'];
-}
+    
+    protected $fillable = [
+        'comment',
+        'user_id',
+        'item_id',
+        
+    ];}
