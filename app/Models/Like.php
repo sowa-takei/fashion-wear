@@ -14,9 +14,9 @@ class Like extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function item()
+    public function items()
     {
-        return $this->belongsTo('App\Models\Item');
+        return $this->belongsTo(Item::class);
     }
          
     //いいねが既にされているかを確認

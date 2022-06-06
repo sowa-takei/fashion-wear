@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class LikeController extends Controller
 {
     public function like(Item $item, Request $request){
-        $like=New Like();
-        $like->item_id=$item->id;
-        $like->user_id=Auth::user()->id;
+        $like = new Like();
+        $like->item_id = $item->id;
+        $like->user_id = Auth::user()->id;
+        
         $like->save();
         return back();
     }
@@ -20,6 +21,7 @@ class LikeController extends Controller
     public function unlike(Item $item, Request $request){
         $user=Auth::user()->id;
         $like=Like::where('item_id', $item->id)->where('user_id', $user)->first();
+        
         $like->delete();
         return back();
     }
