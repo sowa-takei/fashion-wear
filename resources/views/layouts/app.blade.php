@@ -22,32 +22,28 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/swiper.css') }}" rel="stylesheet">
     <link href="{{ asset('css/photo.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/brand.css') }}" rel="stylesheet">
     
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <form action="{{ url('serch')}}" method="post">
-                    {{ csrf_field()}}
-                    {{method_field('get')}}
-                    <div class="form-group">
-                        <input type="text" class="form-control col-md-5" placeholder="検索したい名前を入力してください" name="name">
-                    </div>
-                    <button type="submit" class="btn btn-primary col-md-5">検索</button>
-                </form>
-
+                
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                  
 
                     <!-- Right Side Of Navbar -->
+                    
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.login') }}">ログイン</a>
@@ -64,6 +60,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.brand') }}">ブランド一覧</a>
                         </li>
+                        
+                        
 
                         <!-- Authentication Links -->
                         @guest
@@ -96,15 +94,27 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
-                    </ul>
-                </div>
+                        @endguest 
+                    </ul>         
+                </div>   
             </div>
+            <form action="{{ url('serch')}}" method="post">
+                {{ csrf_field()}}
+                {{method_field('get')}}
+                <div style="margin-right:160px;">
+                    <div class="form-group">
+                        <input type="text" class="form-control col-md-5" placeholder="名前を入力してください" name="name">
+                        <input type="submit" class="btn btn-primary col-md-5" value="検索">
+                    </div> 
+                </div>
+            </form>    
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
+        
     </div>
+    
 </body>
+
 </html>

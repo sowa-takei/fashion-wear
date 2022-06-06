@@ -10,6 +10,8 @@ use App\Models\Item;
 use App\Models\User;
 use App\Models\Brand;
 use App\Models\like;
+use App\Models\Review;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -45,22 +47,54 @@ class HomeController extends Controller
         }
     }
  
-    public function show(Item $item, $id)
+    public function show(Item $item, $id, Request $request, User $user)
     {
-        $like=Like::where('item_id', $item->id)->where('user_id', auth()->user()->id)->first(); 
-        $items = Item::find($id);
-        return view('home.show', compact('items','like'));
+        $user = Auth::user()->id;
+        $item = Item::find($id);
+        $like = Like::where('item_id', $item->id)->where('user_id', auth()->user()->id)->first();
+          
+        $reviews = Review::get();
+        return view('home.show', compact('item','like','reviews', 'user'));
     }
 
     public function brand()
     {
-        $brands = Brand::get();
+        $brands = DB::table('brands')->orderBy('name','asc')->get();
+        
+        $brands = $brands->groupBy(function ($brand) 
+        {
+            // ブランド名の頭文字を取得
+            $initials = mb_substr($brand->name, 0, 1);
+        
+            // アルファベットのグループ
+            if (ctype_alpha($initials)) {
+                // 先頭小文字の場合もあるため大文字に変換して判定する
+                return Str::upper($initials);
+            }
+
+            // 数字の場合「0-9」のグループ
+            if (is_numeric($initials)) {
+                return '0-9';
+            }
+
+            return 'その他';
+        });
+        
+        $brands = collect(range('A', 'Z'))->push('0-9')
+                                ->push('その他')
+                                ->flip()
+                                ->map(function () { return null; })
+                                ->merge($brands);
+        
+        
+        dd($brands);
         return view('home.brand',compact('brands'));
     }
 
     public function brand_show($id)
     {
         $brands = Brand::find($id);
+        
         $items = item::where('name','like', '%' .$brands->name. '%')->get();
         return view('home.brand_show',compact('brands','items'));
     }
@@ -68,6 +102,7 @@ class HomeController extends Controller
     public function edit($id)
     { 
         $user = User::find($id);
+
         return view('home.edit',compact('user'));
     }
 

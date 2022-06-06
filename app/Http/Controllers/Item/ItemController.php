@@ -28,6 +28,7 @@ class ItemController extends Controller
                     'name' => $request['name'],
                     'introduction' => $request['introduction'],
                     'price' => $request['price'],
+                    
                 ]);
             }
         }

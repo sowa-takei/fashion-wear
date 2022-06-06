@@ -57,5 +57,7 @@ Route::group(['prefix' => 'brand'], function() {
     Route::post('destroy{id}', [App\Http\Controllers\Brand\BrandController::class, 'destroy'])->name('brand.destroy');
 });
 
-Route::get('like/{items}', [App\Http\Controllers\LikeController::class, 'like'])->name('like');
-Route::get('unlike/{items}', [App\Http\Controllers\LikeController::class, 'unlike'])->name('unlike');
+Route::get('like/{item}', [App\Http\Controllers\LikeController::class, 'like'])->name('like');
+Route::get('unlike/{item}', [App\Http\Controllers\LikeController::class, 'unlike'])->name('unlike');
+Route::post('review', [App\Http\Controllers\User\itemController::class, 'review'])->name('review');
+Route::post('destroy{id}', [App\Http\Controllers\User\itemController::class, 'destroy'])->name('review.destroy');
