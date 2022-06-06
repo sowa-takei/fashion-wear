@@ -14,11 +14,16 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     public function likes()
     {
-        return $this->hasMany('App\Models\Like');
+        return $this->hasMany(Like::class);
     }
     public function items()
     {
-        return $this->hasMany('App\Models\Items');
+        return $this->hasMany(Item::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 
     /**

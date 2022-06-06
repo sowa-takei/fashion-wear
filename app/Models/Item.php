@@ -16,14 +16,15 @@ class Item extends Model
 
     public function likes()
     {
-        return $this->hasMany('App\Models\Like');
+        return $this->hasMany(Like::class);
     }
 
     public function reviews()
     {
         return $this->hasMany('App\Models\Review');
     }
-  
+
+    
 
     
     protected $table = 'items';
