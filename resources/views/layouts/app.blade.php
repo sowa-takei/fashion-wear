@@ -22,7 +22,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/swiper.css') }}" rel="stylesheet">
     <link href="{{ asset('css/photo.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/brand.css') }}" rel="stylesheet">
+    
     
 </head>
 <body>
@@ -98,16 +98,7 @@
                     </ul>         
                 </div>   
             </div>
-            <form action="{{ url('serch')}}" method="post">
-                {{ csrf_field()}}
-                {{method_field('get')}}
-                <div style="margin-right:160px;">
-                    <div class="form-group">
-                        <input type="text" class="form-control col-md-5" placeholder="名前を入力してください" name="name">
-                        <input type="submit" class="btn btn-primary col-md-5" value="検索">
-                    </div> 
-                </div>
-            </form>    
+            
         </nav>
         <main class="py-4">
             @yield('content')
