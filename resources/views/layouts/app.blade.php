@@ -11,7 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     
 
     <!-- Fonts -->
@@ -22,7 +23,18 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/swiper.css') }}" rel="stylesheet">
     <link href="{{ asset('css/photo.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/brand.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+
+
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider').bxSlider({
+                auto: true,
+                pause: 5000,
+            });
+        });
+</script>
+    
     
 </head>
 <body>
@@ -98,16 +110,7 @@
                     </ul>         
                 </div>   
             </div>
-            <form action="{{ url('serch')}}" method="post">
-                {{ csrf_field()}}
-                {{method_field('get')}}
-                <div style="margin-right:160px;">
-                    <div class="form-group">
-                        <input type="text" class="form-control col-md-5" placeholder="名前を入力してください" name="name">
-                        <input type="submit" class="btn btn-primary col-md-5" value="検索">
-                    </div> 
-                </div>
-            </form>    
+            
         </nav>
         <main class="py-4">
             @yield('content')

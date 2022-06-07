@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('編集画面') }}
+                    <div class="card-body">
             <table class="table table-borderless">
                 <thead class="thead-light">
                     <tr>
@@ -45,6 +48,9 @@
         
 
         </div>
+        </div>
+    </div>
+</div>
     </div>
 </div>
 @endsection

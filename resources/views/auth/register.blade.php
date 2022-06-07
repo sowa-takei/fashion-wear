@@ -69,12 +69,12 @@
                         <div class="row mb-3">
                             <label for="gender" class="col-md-4 col-form-label text-md-end">{{__('性別')}}</label>    
                             <div class="col-md-4">
-                                <input class="form-check-input " type="radio" name="gender" id="gender" value="男性" >    
+                                <input class="form-check-input " type="radio" name="gender" id="gender" value="男性"  {{ old('gender') == "男性" ? 'checked' : '' }}/>   
                                 <label class="form-check-label" for="gender">男性</label>
                                 
-                                <input class="form-check-input " type="radio" name="gender" id="gender" value="女性" >    
+                                <input class="form-check-input " type="radio" name="gender" id="gender" value="女性" {{ old('gender') == "女性"? 'checked' : '' }}/> 
                                 <label class="form-check-label" for="gender">女性</label>
-                                <input class="form-check-input " type="radio" name="gender" id="gender" value="選択なし" >    
+                                <input class="form-check-input " type="radio" name="gender" id="gender" value="選択なし" {{ old('gender') == "選択なし"? 'checked' : '' }}/>   
                                 <label class="form-check-label" for="gender">選択なし</label>
                             </div>  
                         </div>                      
