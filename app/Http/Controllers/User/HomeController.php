@@ -29,9 +29,10 @@ class HomeController extends Controller
     }
 
     public function index()
-    {
+    {    
+        $brands = DB::table('brands')->orderBy('name','asc')->get();
         $items = Item::get();
-        return view('home.index',compact('items'));
+        return view('home.index',compact('items','brands'));
     }
 
     public function serch(Request $request)
@@ -60,34 +61,34 @@ class HomeController extends Controller
     public function brand()
     {
         $brands = DB::table('brands')->orderBy('name','asc')->get();
+       
+       
         
-        $brands = $brands->groupBy(function ($brand) 
-        {
-            // ブランド名の頭文字を取得
-            $initials = mb_substr($brand->name, 0, 1);
+        // $brands = $brands->groupBy(function ($brand) 
+        // {
+        //     // ブランド名の頭文字を取得
+        //     $initials = mb_substr($brand->name, 0, 1);
         
-            // アルファベットのグループ
-            if (ctype_alpha($initials)) {
-                // 先頭小文字の場合もあるため大文字に変換して判定する
-                return Str::upper($initials);
-            }
+        //     // アルファベットのグループ
+        //     if (ctype_alpha($initials)) {
+        //         // 先頭小文字の場合もあるため大文字に変換して判定する
+        //         return Str::upper($initials);
+        //     }
 
-            // 数字の場合「0-9」のグループ
-            if (is_numeric($initials)) {
-                return '0-9';
-            }
+        //     // 数字の場合「0-9」のグループ
+        //     if (is_numeric($initials)) {
+        //         return '0-9';
+        //     }
 
-            return 'その他';
-        });
+        //     return 'その他';
+        // });
         
-        $brands = collect(range('A', 'Z'))->push('0-9')
-                                ->push('その他')
-                                ->flip()
-                                ->map(function () { return null; })
-                                ->merge($brands);
+        // $brands = collect(range('A', 'Z'))->push('0-9')
+        //                         ->push('その他')
+        //                         ->flip()
+        //                         ->map(function () { return null; })
+        //                         ->merge($brands);
         
-        
-        dd($brands);
         return view('home.brand',compact('brands'));
     }
 

@@ -5,7 +5,8 @@
     <div class="card">
         <div class="card-header">{{ __('商品詳細画面') }}</div>
             <div class="row">
-                <div class="col-12">
+            @include('layouts.sidebar')
+                <div class="col-10">
                     <div class="row mx-auto mt-3">
                         @foreach ($items as $item)
                                 <div class="col-4">
