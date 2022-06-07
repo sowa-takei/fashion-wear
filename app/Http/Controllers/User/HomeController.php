@@ -17,9 +17,10 @@ class HomeController extends Controller
 {
     public function top()
     {
+        $brands = DB::table('brands')->orderBy('name','asc')->get();
         $items = DB::table('items')->orderBy('id', 'desc')->take(4)->get();
         
-        return view('home.top',compact('items'));
+        return view('home.top',compact('items','brands'));
     }
     public function home()
     {
@@ -37,12 +38,13 @@ class HomeController extends Controller
 
     public function serch(Request $request)
     {
+        $brands = DB::table('brands')->orderBy('name','asc')->get();
         $keyword_name = $request->name;
         if(!empty($keyword_name))
         {
             $query = Item::query();
             $items = $query->where('name','like', '%' .$keyword_name. '%')->get();
-            return view('home.index',compact('request'))->with([
+            return view('home.index',compact('request','brands'))->with([
                 'items' => $items
             ]);
         }
@@ -110,7 +112,10 @@ class HomeController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
+        
         $user->update($request->only(['name','name_kana', 'last_name', 'last_name_kana', 'postal_code', 'address', 'gender', 'telephone_number', 'emmail']));
+        
+        
         return redirect()->route('home');
     }
 
