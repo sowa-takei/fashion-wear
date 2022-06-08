@@ -15,7 +15,7 @@
             <div class="col-8">
                 <div class="row">
                     <div style="text-align: center;">
-                        {{ $brands->introduction }}
+                        {!! nl2br(htmlspecialchars($brands->introduction )) !!}
                     </div> 
                 </div> 
             </div>

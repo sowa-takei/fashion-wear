@@ -9,17 +9,14 @@
                 </div>
                 <div class="col-8">
                     <table class="table table-borderless"> 
-                        <tr>
-                            <th>商品id</th>
-                            <td>{{ $items->id}}</td>
-                        </tr>
+
                         <tr>
                             <th>商品名</th>
                             <td>{{ $items->name}}</td>
                         </tr>
                         <tr>
                             <th>商品詳細</th>
-                            <td>{{ $items->introduction }}</td>
+                            <td>{!! nl2br(htmlspecialchars($items->introduction )) !!}</td>
                         </tr>
                         <tr>
                             <th>値段</th>
