@@ -3,11 +3,26 @@
 namespace App\Http\Controllers\Brand;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\brand;
+use App\Models\user;
 
 class BrandController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
+    
     public function index()
     {
         $brands = Brand::get();
@@ -35,7 +50,7 @@ class BrandController extends Controller
                     'name' => $request['name'],
                     'introduction' => $request['introduction'],
                 ]);
-                return redirect()->route('login.index')->with([
+                return redirect()->route('brand.index')->with([
                     
                 ]);
             }
