@@ -15,6 +15,7 @@
                             <tr>
                                 <th>商品id</th>
                                 <th>商品名</th>
+                                <th>写真</th>
                                 <th>値段</th>
                             </tr>
                         </thead>
