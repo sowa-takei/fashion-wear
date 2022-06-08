@@ -25,7 +25,7 @@
             <div class="row mb-3">
               <label for="introduction" class="col-md-4 col-form-label text-md-end">{{ __('商品説明') }}</label>
               <div class="col-md-4">
-                <textarea id="introduction" class="form-control"  name="introduction" placeholder="商品名を記述" required autocomplete="introduction" autofocus></textarea>
+                <textarea id="introduction" class="form-control" rows="15"  name="introduction" placeholder="商品名を記述" required autocomplete="introduction" autofocus></textarea>
               </div>
             </div>
 
