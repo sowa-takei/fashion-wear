@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function index()
     {    
         $brands = DB::table('brands')->orderBy('name','asc')->get();
-        $items = Item::get();
+        $items = Item::paginate(15);
         return view('home.index',compact('items','brands'));
     }
 

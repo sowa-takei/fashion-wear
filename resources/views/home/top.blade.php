@@ -7,7 +7,6 @@
             <div class="row">
                 @include('layouts.sidebar')
                 <div class="col-10">
-                    <!-- Slider main container -->
                     <div class="slider">
                         <img src="{{ asset('img/off.jpg') }}" height="500" alt="">
                         <img src="{{ asset('img/HERON-PRESTON.jpg') }}" height="500" alt=""> 
@@ -15,7 +14,7 @@
                         <img src="{{ asset('img/balenciaga.jpg') }}"  height="500" alt="">
                         <img src="{{ asset('img/fear-of-god.jpg') }}"  height="500" alt="">
                     </div>
-                    <div class="col-10">
+                    <div class="col-12">
                     <h1>新着商品</h1>
                     <div class="row mx-auto mt-3">
                         @foreach ($items as $item)
@@ -36,14 +35,11 @@
                     </div>   
                 </div>   
                 </div> 
-            </div>
-            <div class="row">  
-                
-            </div>  
+            </div> 
         </div>
     </div>
 </div>
 @endsection
-<script src="{{ mix('js/swiper.js') }}" ></script>  
+
 </body>
 </html>

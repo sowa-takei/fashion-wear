@@ -1,5 +1,4 @@
 @extends('layouts.app_admin')
-
 @section('content')
 <div class="conteiner">
     <div class="row justify-content-center">
@@ -14,9 +13,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>id</th>
-                                <th>ブランド名</th>
-                               
-                                
+                                <th>ブランド名</th> 
                             </tr>
                         </thead>
                         @foreach ($brands as $brand)
