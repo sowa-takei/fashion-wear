@@ -32,7 +32,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $items = Item::get();
+        $items = Item::paginate(10);
         $brands = Brand::get();
         return view('admin.home',compact('items'));
     }
