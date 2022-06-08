@@ -25,21 +25,16 @@
             <div class="row mb-3">
               <label for="introduction" class="col-md-4 col-form-label text-md-end">{{ __('ブランド説明') }}</label>
               <div class="col-md-4">
-                <textarea id="introduction" class="form-control"  name="introduction" placeholder="商品名を記述" required autocomplete="introduction" autofocus></textarea>
+                <textarea id="introduction" class="form-control" rows="15" name="introduction" placeholder="商品名を記述" required autocomplete="introduction" autofocus></textarea>
               </div>
             </div>
-
-            
-
-            <div class="row mb-0">
+            <div class="row mb-3">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary">
                         {{ __('作成') }}
                     </button>
                 </div>
             </div>
-
-
           </form>
         </div>
       </div>
