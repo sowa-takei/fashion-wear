@@ -163,6 +163,8 @@ return [
         'name' => '苗字',
         'last_name' => '名前',
         'address' => '住所',
+        'telephone_number' => '電話番号',
+        'comment' => 'コメント',
     ],
 
 ];
