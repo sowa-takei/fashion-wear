@@ -31,7 +31,7 @@ return [
         'array'   => ':attributeは、:min個から:max個の間で指定してください。',
     ],
     'boolean'              => ':attributeは、trueかfalseを指定してください。',
-    'confirmed'            => ':attributeと、確認フィールドとが、一致していません。',
+    'confirmed'            => ':attributeと、パスワード再確認が、一致していません。',
     'current_password'     => 'パスワードが正しくありません。',
     'date'                 => ':attributeには有効な日付を指定してください。',
     'date_equals'          => ':attributeには、:dateと同じ日付けを指定してください。',
@@ -159,7 +159,10 @@ return [
         'postal_code' => '郵便番号',
         'gender' => '性別',
         'name_kana' => '苗字のフリガナ',
-        'last_name_kana' => '名前のフリガナ'
+        'last_name_kana' => '名前のフリガナ',
+        'name' => '苗字',
+        'last_name' => '名前',
+        'address' => '住所',
     ],
 
 ];
