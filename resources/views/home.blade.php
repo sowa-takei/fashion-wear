@@ -6,6 +6,15 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('編集画面') }}
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="card-body">
                         <table class="table table-borderless">
                             <thead class="thead-light">
@@ -43,7 +52,7 @@
                                 </tr>
                             </thead>
                         </table>
-                        <a href="{{ route('user.edit',['id=>$user->id']) }}" class="btn btn-info">編集</a>
+                        <div style="text-align: right;"><a href="{{ route('user.edit',['id=>$user->id']) }}" class="btn btn-info">編集</a></div>
                     </div>
                 </div>
             </div>
