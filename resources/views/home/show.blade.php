@@ -42,6 +42,15 @@
                     <form method="POST" action="{{ route('review')  }}">@csrf
                         <div class="col-md-4">
                             <input type="hidden" name='item_id' value="{{$item->id}}">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <textarea  class="form-control"  name="comment" placeholder="コメント" required autocomplete="comment" autofocus></textarea>
                             <div style="text-align:right;">
                                 <button type="submit" class="btn btn-primary">

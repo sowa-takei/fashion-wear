@@ -8,6 +8,16 @@ use App\Models\Item;
 
 class ItemController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
     public function create (Request $request)
     {
         return view('item.create'); 

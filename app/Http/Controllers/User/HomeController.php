@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
+use App\Http\Requests\USerRequest;
+use App\Http\Requests\ReviewRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -43,7 +44,7 @@ class HomeController extends Controller
         if(!empty($keyword_name))
         {
             $query = Item::query();
-            $items = $query->where('name','like', '%' .$keyword_name. '%')->get();
+            $items = $query->where('name','like', '%' .$keyword_name. '%')->paginate(15);
             return view('home.index',compact('request','brands'))->with([
                 'items' => $items
             ]);
@@ -109,7 +110,7 @@ class HomeController extends Controller
         return view('home.edit',compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = User::find($id);
         

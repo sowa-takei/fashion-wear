@@ -6,7 +6,15 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('新規作成画面') }}</div>
-
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -17,11 +25,6 @@
                             <div class="col-md-4">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"placeholder="山田" required autocomplete="name" autofocus>
                                 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                             <div class="col-md-4">
                                 <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}"placeholder="太郎" required autocomplete="last_name" autofocus>
@@ -33,12 +36,6 @@
                             <!-- フリガナ入力 -->
                             <div class="col-md-4">
                                 <input id="name_kana" type="text" class="form-control @error('name_kana') is-invalid @enderror" name="name_kana" value="{{ old('name_kana') }}"placeholder="ヤマダ" required autocomplete="name_kana" autofocus>
-                                    
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                             <div class="col-md-4">
                                 <input id="last_name_kana" type="text" class="form-control @error('last_name_kana') is-invalid @enderror" name="last_name_kana" value="{{ old('last_name_kana') }}"placeholder="タロウ" required autocomplete="last_name_kana" autofocus>
@@ -48,7 +45,7 @@
                         <div class="row mb-3">
                             <label for="postal_code" class="col-md-4 col-form-label text-md-end">{{__('郵便番号')}}</label>
                             <div class="col-md-4">
-                                <input id="postal_code" type="text" class="form-control @error('postl_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code')}}" placeholder="123-4567" required autocomplete="postal_code" autofocus>
+                                <input id="postal_code" type="text" class="form-control @error('postl_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code')}}" placeholder="1234567" required autocomplete="postal_code" autofocus>
                             </div>
                         </div>
                        
@@ -83,12 +80,6 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('メールアドレス') }}</label>
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="sample@com" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -97,12 +88,6 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -117,7 +102,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('新規登録') }}
                                 </button>
                             </div>
                         </div>

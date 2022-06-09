@@ -9,7 +9,15 @@
                 <div class="card-header">{{ __('編集画面') }}
                     <div class="card-body">
                         <div class="row mb-3">
-                        
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('名前') }}</label>
                             <div class="col-md-4">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', Auth::user()->name)  }}" required autocomplete="name" autofocus>
@@ -69,9 +77,9 @@
                                 <input id="email" type="text" class="form-control @error('name') is-invalid @enderror" name="email" value="{{ Auth::user()->email  }}" required autocomplete="email" autofocus>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success">
+                        <div style="text-align: right;"><button type="submit" class="btn btn-success">
                             {{ __('更新') }}
-                        </button>
+                        </button></div>
                     </div>
                 </div>
             </div>

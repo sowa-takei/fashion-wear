@@ -4,13 +4,14 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReviewRequest;
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Review;
 
 class itemController extends Controller
 {
-    public function review(Request $request)
+    public function review(ReviewRequest $request)
     {    
         // DBに登録する処理
         $review = new review;
