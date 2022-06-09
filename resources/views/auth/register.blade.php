@@ -45,7 +45,7 @@
                         <div class="row mb-3">
                             <label for="postal_code" class="col-md-4 col-form-label text-md-end">{{__('郵便番号')}}</label>
                             <div class="col-md-4">
-                                <input id="postal_code" type="text" class="form-control @error('postl_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code')}}" placeholder="123-4567" required autocomplete="postal_code" autofocus>
+                                <input id="postal_code" type="text" class="form-control @error('postl_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code')}}" placeholder="1234567" required autocomplete="postal_code" autofocus>
                             </div>
                         </div>
                        
