@@ -160,11 +160,13 @@ return [
         'gender' => '性別',
         'name_kana' => '苗字のフリガナ',
         'last_name_kana' => '名前のフリガナ',
-        'name' => '苗字',
+        'name' => '名前',
         'last_name' => '名前',
         'address' => '住所',
         'telephone_number' => '電話番号',
         'comment' => 'コメント',
+        'introduction' => '説明',
+        'price' => '値段',
     ],
 
 ];
