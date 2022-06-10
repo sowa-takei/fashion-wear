@@ -6,6 +6,15 @@
       <div class="card">
         <div class="card-header">{{ __('新規作成画面') }}</div>
         <div class="card-body">
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
           <form method="POST" action="{{ route('brand.store')  }}" enctype="multipart/form-data">@csrf
             <div class="row mb-3">
               <label for="image_id" class="col-md-4 col-form-label text-md-end">{{ __('ブランド画像') }}</label>
