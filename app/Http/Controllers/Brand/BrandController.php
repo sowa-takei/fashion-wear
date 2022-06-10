@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Brand;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BrandRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class BrandController extends Controller
         return view('brand.create'); 
     }
 
-    public function store (Request $request)
+    public function store (BrandRequest $request)
     {
         // 画像フォームでリクエストした画像情報を取得
         $img = $request->file('image_id');
@@ -49,12 +50,10 @@ class BrandController extends Controller
                     'image_id' => $path,
                     'name' => $request['name'],
                     'introduction' => $request['introduction'],
-                ]);
-                return redirect()->route('brand.index')->with([
-                    
-                ]);
+                ]);  
             }
         }
+        return redirect()->route('brand.index');
     }
 
     public function show($id)
@@ -70,7 +69,7 @@ class BrandController extends Controller
         return view('brand.edit', compact('brands'));
     }
 
-    public function update(Request $request, $id)
+    public function update(BrandRequest $request, $id)
     {
         $brands = Brand::find($id);
         $brands->update($request->only(['name','introduction']));
