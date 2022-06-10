@@ -8,6 +8,15 @@
                 <div class="card-header">{{ __('編集画面') }}
                     <div class="card-body">
                         <div class="row mb-3">
+                        @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('商品名') }}</label>
                             <div class="col-md-5">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $items->name)  }}" required autocomplete="name" autofocus>
@@ -28,9 +37,9 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success">
+                    <div style="text-align: right;"><button type="submit" class="btn btn-success">
                         {{ __('更新') }}
-                    </button>
+                    </button></div>
                 </div>
             </div>
         </div>

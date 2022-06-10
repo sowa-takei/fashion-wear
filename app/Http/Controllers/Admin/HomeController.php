@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ItemRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -51,7 +52,7 @@ class HomeController extends Controller
         return view('item.edit', compact('items'));
     }
 
-    public function update(Request $request, $id)
+    public function update(ItemRequest $request, $id)
     {
         $items = Item::find($id);
         $items->update($request->only(['name','introduction','price']));
