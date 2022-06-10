@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Item;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ItemRequest;
 use Illuminate\Http\Request;
 use App\Models\Item;
 
@@ -22,7 +23,7 @@ class ItemController extends Controller
     {
         return view('item.create'); 
     }
-    public function store (Request $request)
+    public function store (ItemRequest $request)
     {
         // 画像フォームでリクエストした画像情報を取得
         $img = $request->file('image_id');
