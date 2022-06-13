@@ -3,7 +3,7 @@
 @section('content')
 <div class="conteiner">
     <div class="card">
-        <div class="card-header">{{ __('商品詳細画面') }}</div>
+        <div class="card-header">{{ __('Topページ') }}</div>
             <div class="row">
                 @include('layouts.sidebar')
                 <div class="col-10">
